@@ -66,11 +66,13 @@ ENV ARCH=${arch} UBUNTU_SUITE=${v} DOCKER_REPO=${repo}
 EOF
 
 	if [ -n "${qemu_arch}" ]; then
-	    wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.0.0/amd64_qemu-${qemu_arch}-static.tar.xz
+	    if [ ! -f x86_64_qemu-${qemu_arch}-static.tar.xz ]; then
+		wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.5.0/x86_64_qemu-${qemu_arch}-static.tar.xz
+	    fi
 	    cat >> Dockerfile <<EOF
 
 # Add qemu-user-static binary for amd64 builders
-ADD amd64_qemu-${qemu_arch}-static.tar.xz /usr/bin
+ADD x86_64_qemu-${qemu_arch}-static.tar.xz /usr/bin
 EOF
 	fi
 
