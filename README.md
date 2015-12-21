@@ -1,6 +1,8 @@
-# :eaderth_africa: ubuntu-decore
+# :earth_africa: ubuntu-decore
 
 Multiarch Ubuntu images for Docker.
+
+Based on https://github.com/tianon/docker-brew-ubuntu-core/
 
 * `multiarch/ubuntu-decore` on [Docker Hub](https://hub.docker.com/r/multiarch/ubuntu-decore/)
 * [Available tags](https://hub.docker.com/r/multiarch/ubuntu-decore/tags/)
