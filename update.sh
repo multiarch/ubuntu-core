@@ -9,11 +9,18 @@ if [ ${#versions[@]} -eq 0 ]; then
 fi
 versions=( "${versions[@]%/}" )
 
+repo="$(cat repo 2>/dev/null || true)"
+if [ -z "$repo" ]; then
+    user="$(docker info | awk -F ': ' '$1 == "Username" { print $2; exit }')"
+    repo="${user:+$user/}ubuntu-core"
+fi
+
 for version in "${versions[@]}"; do
     (
 	cd "$version"
 	v="$(cat version)"
 	arch="$(cat arch)"
+	qemu_arch="$(cat qemu_arch 2>/dev/null || true)"
 	thisTarBase="ubuntu-$v-core-cloudimg-$arch"
 	thisTar="$thisTarBase-root.tar.gz"
 	baseUrl="https://partner-images.canonical.com/core/$v"
@@ -55,6 +62,20 @@ for version in "${versions[@]}"; do
 FROM scratch
 ADD $thisTar /
 
+ENV ARCH=${arch} UBUNTU_SUITE=${v} DOCKER_REPO=${repo}
+EOF
+
+	if [ -n "${qemu_arch}" ]; then
+	    wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.0.0/amd64_qemu-${qemu_arch}-static.tar.xz
+	    cat >> Dockerfile <<EOF
+
+# Add qemu-user-static binary for amd64 builders
+ADD amd64_qemu-${qemu_arch}-static.tar.xz /usr/bin
+EOF
+	fi
+
+cat >> Dockerfile <<EOF
+
 # a few minor docker-specific tweaks
 # see https://github.com/docker/docker/blob/master/contrib/mkimage/debootstrap
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
@@ -83,12 +104,6 @@ CMD ["/bin/bash"]
 EOF
     )
 done
-
-repo="$(cat repo 2>/dev/null || true)"
-if [ -z "$repo" ]; then
-    user="$(docker info | awk -F ': ' '$1 == "Username" { print $2; exit }')"
-    repo="${user:+$user/}ubuntu-core"
-fi
 
 for v in "${versions[@]}"; do
     if [ ! -f "$v/Dockerfile" ]; then
