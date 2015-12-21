@@ -1,11 +1,11 @@
-# :earth_africa: ubuntu-decore
+# :earth_africa: ubuntu-core
 
 Multiarch Ubuntu images for Docker.
 
 Based on https://github.com/tianon/docker-brew-ubuntu-core/
 
-* `multiarch/ubuntu-decore` on [Docker Hub](https://hub.docker.com/r/multiarch/ubuntu-decore/)
-* [Available tags](https://hub.docker.com/r/multiarch/ubuntu-decore/tags/)
+* `multiarch/ubuntu-core` on [Docker Hub](https://hub.docker.com/r/multiarch/ubuntu-core/)
+* [Available tags](https://hub.docker.com/r/multiarch/ubuntu-core/tags/)
 
 ## Usage
 
@@ -20,7 +20,7 @@ $ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 Then you can run an `armhf` image from your `x86_64` Docker host.
 
 ```console
-$ docker run -it --rm multiarch/ubuntu-decore:armhf-wily
+$ docker run -it --rm multiarch/ubuntu-core:armhf-wily
 root@a0818570f614:/# uname -a
 Linux a0818570f614 4.1.13-boot2docker #1 SMP Fri Nov 20 19:05:50 UTC 2015 armv7l armv7l armv7l GNU/Linux
 root@a0818570f614:/# exit
@@ -29,7 +29,7 @@ root@a0818570f614:/# exit
 Or an `x86_64` image from your `x86_64` Docker host, directly, without qemu emulation.
 
 ```console
-$ docker run -it --rm multiarch/ubuntu-decore:amd64-wily
+$ docker run -it --rm multiarch/ubuntu-core:amd64-wily
 root@27fe384370c9:/# uname -a
 Linux 27fe384370c9 4.1.13-boot2docker #1 SMP Fri Nov 20 19:05:50 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
 root@27fe384370c9:/#
@@ -38,7 +38,7 @@ root@27fe384370c9:/#
 It also works for `arm64`
 
 ```console
-$ docker run -it --rm multiarch/ubuntu-decore:arm64-wily
+$ docker run -it --rm multiarch/ubuntu-core:arm64-wily
 root@723fb9f184fa:/# uname -a
 Linux 723fb9f184fa 4.1.13-boot2docker #1 SMP Fri Nov 20 19:05:50 UTC 2015 aarch64 aarch64 aarch64 GNU/Linux
 ```
