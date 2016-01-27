@@ -1,5 +1,7 @@
 # :earth_africa: ubuntu-core
 
+![](https://raw.githubusercontent.com/multiarch/dockerfile/master/logo.jpg)
+
 Multiarch Ubuntu images for Docker.
 
 Based on https://github.com/tianon/docker-brew-ubuntu-core/
