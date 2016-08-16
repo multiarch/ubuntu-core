@@ -67,7 +67,7 @@ EOF
 
 	if [ -n "${qemu_arch}" ]; then
 	    if [ ! -f x86_64_qemu-${qemu_arch}-static.tar.xz ]; then
-		wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.5.0/x86_64_qemu-${qemu_arch}-static.tar.xz
+		wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.6.0/x86_64_qemu-${qemu_arch}-static.tar.xz
 	    fi
 	    cat >> Dockerfile <<EOF
 
