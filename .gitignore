@@ -1,0 +1,7 @@
+*/*.tar.gz
+*/*.manifest
+*/build-info.txt
+*/Dockerfile
+*/MD5SUMS*
+*/SHA1SUMS*
+*/SHA256SUMS*
