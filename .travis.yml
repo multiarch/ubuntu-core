@@ -10,7 +10,8 @@ env:
         - ARCH=amd64     VERSION=xenial    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=xenial    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=xenial    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=xenial    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=xenial    QEMU_ARCH=ppc64     TAG_ARCH=ppc64el
+        - ARCH=s390x   VERSION=xenial    QEMU_ARCH=s390x     TAG_ARCH=s390x
 
 before_script:
     - sudo apt-get -y install qemu-user-static
