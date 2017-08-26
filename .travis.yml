@@ -10,7 +10,7 @@ env:
         - ARCH=amd64     VERSION=artful    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=artful    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=artful    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=artful    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=artful    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
         - ARCH=s390x     VERSION=artful    QEMU_ARCH=s390x     TAG_ARCH=s390x
 
         - ARCH=i386      VERSION=precise    QEMU_ARCH=i386      TAG_ARCH=x86
@@ -21,33 +21,33 @@ env:
         - ARCH=amd64     VERSION=trusty    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=trusty    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=trusty    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=trusty    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=trusty    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
 
         - ARCH=i386      VERSION=wily    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=wily    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=wily    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=wily    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=wily    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=wily    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
 
         - ARCH=i386      VERSION=xenial    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=xenial    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=xenial    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=xenial    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=xenial    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=xenial    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
         - ARCH=s390x     VERSION=xenial    QEMU_ARCH=s390x     TAG_ARCH=s390x
 
         - ARCH=i386      VERSION=yakkety    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=yakkety    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=yakkety    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=yakkety    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=yakkety    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=yakkety    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
         - ARCH=s390x     VERSION=yakkety    QEMU_ARCH=s390x     TAG_ARCH=s390x
 
         - ARCH=i386      VERSION=zesty    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=zesty    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=zesty    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=zesty    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        - ARCH=ppc64el   VERSION=zesty    QEMU_ARCH=ppc64le   TAG_ARCH=ppc64el
+        - ARCH=ppc64el   VERSION=zesty    QEMU_ARCH=ppc64   TAG_ARCH=ppc64el
         - ARCH=s390x     VERSION=zesty    QEMU_ARCH=s390x     TAG_ARCH=s390x
 
 before_script:
