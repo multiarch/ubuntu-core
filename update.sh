@@ -56,7 +56,6 @@ fi
 cat > Dockerfile <<-EOF
 	FROM scratch
 	ADD $thisTar /
-
 	ENV ARCH=${ARCH} UBUNTU_SUITE=${VERSION} DOCKER_REPO=${DOCKER_REPO}
 EOF
 
