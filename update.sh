@@ -70,13 +70,14 @@ for version in "${versions[@]}"; do
 	EOF
 
 	if [ -n "${qemu_arch}" ]; then
-		if [ ! -f x86_64_qemu-${qemu_arch}-static.tar.gz ]; then
-			wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.6.0/x86_64_qemu-${qemu_arch}-static.tar.gz
-		fi
-		cat >> Dockerfile <<-EOF
-			# Add qemu-user-static binary for amd64 builders
-			ADD x86_64_qemu-${qemu_arch}-static.tar.gz /usr/bin
-		EOF
+	    if [ ! -f x86_64_qemu-${qemu_arch}-static.tar.gz ]; then
+		wget -N https://github.com/multiarch/qemu-user-static/releases/download/v2.7.0/x86_64_qemu-${qemu_arch}-static.tar.gz
+	    fi
+	    cat >> Dockerfile <<EOF
+
+# Add qemu-user-static binary for amd64 builders
+ADD x86_64_qemu-${qemu_arch}-static.tar.gz /usr/bin
+EOF
 	fi
 
 	cat >> Dockerfile <<-EOF
