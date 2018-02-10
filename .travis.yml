@@ -6,11 +6,6 @@ env:
         - QEMU_VER=v2.9.1
         - DOCKER_REPO=multiarch/ubuntu-core
     matrix:
-        - ARCH=i386      VERSION=artful    QEMU_ARCH=i386      TAG_ARCH=x86
-        - ARCH=amd64     VERSION=artful    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
-        - ARCH=armhf     VERSION=artful    QEMU_ARCH=arm       TAG_ARCH=armhf
-        - ARCH=arm64     VERSION=artful    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-
         - ARCH=i386      VERSION=trusty    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=trusty    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=trusty    QEMU_ARCH=arm       TAG_ARCH=armhf
