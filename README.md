@@ -1,4 +1,4 @@
-# :earth_africa: ubuntu-core
+# :earth_africa: ubuntu-core [![Build Status](https://travis-ci.org/multiarch/ubuntu-core.svg?branch=master)](https://travis-ci.org/multiarch/ubuntu-core)
 
 ![](https://raw.githubusercontent.com/multiarch/dockerfile/master/logo.jpg)
 
