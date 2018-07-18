@@ -1,6 +1,10 @@
 sudo: required
 services: docker
 language: bash
+addons:
+  apt:
+    packages:
+      - docker-ce
 env:
     global:
         - QEMU_VER=v2.12.0
