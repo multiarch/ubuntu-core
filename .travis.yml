@@ -31,4 +31,4 @@ before_script:
 script:
     - sudo ./update.sh -a "$ARCH" -v "$VERSION" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$DOCKER_REPO" -t "$TAG_ARCH"
 after_success:
-    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin && docker push $DOCKER_REPO; fi
+    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin && docker push $DOCKER_REPO; fi
