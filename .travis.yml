@@ -26,9 +26,15 @@ env:
         - ARCH=armhf     VERSION=bionic    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=bionic    QEMU_ARCH=aarch64   TAG_ARCH=arm64
 
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
+
 before_script:
     - sudo apt-get -y install qemu-user-static
 script:
     - sudo ./update.sh -a "$ARCH" -v "$VERSION" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$DOCKER_REPO" -t "$TAG_ARCH"
 after_success:
-    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin && docker push $DOCKER_REPO; fi
+    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin && docker push $DOCKER_REPO; fi
