@@ -1,9 +1,16 @@
+dist: xenial
 sudo: required
 services: docker
 language: bash
+addons:
+  apt:
+    sources:
+        - sourceline: 'deb http://archive.ubuntu.com/ubuntu bionic main universe'
+    packages:
+        - qemu-user-static
 env:
     global:
-        - QEMU_VER=v2.12.0
+        - QEMU_VER=v3.1.0-3
         - DOCKER_REPO=multiarch/ubuntu-core
     matrix:
         - ARCH=i386      VERSION=trusty    QEMU_ARCH=i386      TAG_ARCH=x86
@@ -16,25 +23,15 @@ env:
         - ARCH=armhf     VERSION=xenial    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=xenial    QEMU_ARCH=aarch64   TAG_ARCH=arm64
 
-        - ARCH=i386      VERSION=artful    QEMU_ARCH=i386      TAG_ARCH=x86
-        - ARCH=amd64     VERSION=artful    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
-        - ARCH=armhf     VERSION=artful    QEMU_ARCH=arm       TAG_ARCH=armhf
-        - ARCH=arm64     VERSION=artful    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-        
         - ARCH=i386      VERSION=bionic    QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=bionic    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=bionic    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=bionic    QEMU_ARCH=aarch64   TAG_ARCH=arm64
-
-before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
-
-before_script:
-    - sudo apt-get -y install qemu-user-static
 script:
     - sudo ./update.sh -a "$ARCH" -v "$VERSION" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$DOCKER_REPO" -t "$TAG_ARCH"
 after_success:
-    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin && docker push $DOCKER_REPO; fi
+    - |
+      if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin && \
+              docker push $DOCKER_REPO
+      fi
