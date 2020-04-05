@@ -28,7 +28,6 @@ env:
         - ARCH=armhf     VERSION=bionic    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=bionic    QEMU_ARCH=aarch64   TAG_ARCH=arm64
 
-        - ARCH=i386      VERSION=focal     QEMU_ARCH=i386      TAG_ARCH=x86
         - ARCH=amd64     VERSION=focal     QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=focal     QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=focal     QEMU_ARCH=aarch64   TAG_ARCH=arm64
