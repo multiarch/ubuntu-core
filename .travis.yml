@@ -10,7 +10,7 @@ addons:
         - qemu-user-static
 env:
     global:
-        - QEMU_VER=v3.1.0-3
+        - QEMU_VER=v4.2.0-6
         - DOCKER_REPO=multiarch/ubuntu-core
     matrix:
         - ARCH=i386      VERSION=trusty    QEMU_ARCH=i386      TAG_ARCH=x86
@@ -27,6 +27,10 @@ env:
         - ARCH=amd64     VERSION=bionic    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
         - ARCH=armhf     VERSION=bionic    QEMU_ARCH=arm       TAG_ARCH=armhf
         - ARCH=arm64     VERSION=bionic    QEMU_ARCH=aarch64   TAG_ARCH=arm64
+
+        - ARCH=amd64     VERSION=focal     QEMU_ARCH=x86_64    TAG_ARCH=x86_64
+        - ARCH=armhf     VERSION=focal     QEMU_ARCH=arm       TAG_ARCH=armhf
+        - ARCH=arm64     VERSION=focal     QEMU_ARCH=aarch64   TAG_ARCH=arm64
 script:
     - sudo ./update.sh -a "$ARCH" -v "$VERSION" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$DOCKER_REPO" -t "$TAG_ARCH"
 after_success:
