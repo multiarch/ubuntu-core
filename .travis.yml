@@ -10,7 +10,7 @@ addons:
         - qemu-user-static
 env:
     global:
-        - QEMU_VER=v5.0.0-2
+        - QEMU_VER=v5.2.0-2
         - DOCKER_REPO=multiarch/ubuntu-core
     matrix:
         - ARCH=i386      VERSION=trusty    QEMU_ARCH=i386      TAG_ARCH=x86
